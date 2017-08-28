@@ -16,9 +16,94 @@
     <script src="javascript/jquery-2.1.3.js"></script>
 
 
-
 </head>
 <body>
+<div class="screen screen1"  style="display: block">
+    <div class="logo img-box"><img src="img/logo.png"/></div>
+    <div class="box-bg">
+        <ul class="box-text-1">
+            <li><i><img src="img/icon.png"/></i>本测验考察视觉搜索能力和反应速度。</li>
+            <li><i><img src="img/icon.png"/></i>相关脑区为枕叶、前额叶及顶叶皮层。</li>
+        </ul>
+        <div class="box-text-2"><p class="font-small">完成本测验大约需要10分钟</p></div>
+
+    </div>
+
+    <div class="button-box">
+        <p class="button">进入测验</p>
+    </div>
+</div>
+<div class="screen screen1">
+    <div class="box-bg box-bg-top">
+        <div class="box-text-2">
+            <p>请按照1、2、3、4……的顺序</p>
+            <p>快速点击数字</p>
+        </div>
+    </div>
+    <div class="button-box">
+        <p class="button">开始练习</p>
+    </div>
+</div>
+
+<div class="screen screen1">
+    <div class="box-bg box-bg-top">
+        <div class="box-text-2">
+            <p class="font-big">非常好！下面进入正式测验</p>
+            <p class="font-small">请按照1、2、3、4……的顺序</p>
+            <p class="font-small">快速点击数字</p>
+        </div>
+    </div>
+    <div class="button-box">
+        <p class="button">开始测试</p>
+    </div>
+</div>
+<div class="screen screen1">
+    <div class="logo img-box"><img src="img/logo.png"/></div>
+    <div class="box-bg">
+        <ul class="box-text-1">
+            <li><i><img src="img/icon.png"/></i>本测验考察视觉搜索能力和反应速度。</li>
+            <li><i><img src="img/icon.png"/></i>相关脑区为枕叶、前额叶及顶叶皮层。</li>
+        </ul>
+    </div>
+
+    <div class="button-box button-box-s">
+        <p class="button">退出游戏</p>
+        <p class="button">继续测验</p>
+    </div>
+</div>
+<div class="screen screen1">
+    <div class="box-bg box-bg-top">
+        <div class="box-text-2">
+            <p class="font-big">数字搜索测验已完成</p>
+            <p class="font-small">您回答得非常好！</p>
+            <p class="font-small">用时<span> 55</span>秒</p>
+            <p class="font-small">得分<span>1000 </span>分</p>
+        </div>
+    </div>
+    <div class="button-box">
+        <p class="button">退出游戏</p>
+    </div>
+</div>
+
+<div class="screen screen1">
+    <p class="over-text">很遗憾时间到了，您未能完成测验</p>
+    <div class="button-box">
+        <p class="button">退出游戏</p>
+    </div>
+</div>
+<ul class="list" id="list" style="display: none">
+
+</ul>
+
 <script src="javascript/gameView.js"></script>
+<script>
+    var screenH = $(document).height()
+    console.log('screenH', screenH)
+    $('.box-bg').css({'font-size': screenH / 32, 'line-height': screenH / 16 + 'px'})
+    $('.box-bg .font-small').css({'font-size': screenH / 35})
+    $('.box-bg .font-big').css({'font-size': screenH / 30, 'line-height': screenH / 12 + 'px'})
+    $('.button').css({'font-size': screenH / 35, 'line-height': screenH / 15 + 'px'})
+
+</script>
 </body>
 </html>

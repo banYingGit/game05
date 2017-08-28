@@ -1,15 +1,20 @@
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     list-style: none;
+    color: #7f2d00;
 }
 
 body, html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-
+    background: #eebfc7;
+    background: -moz-linear-gradient(top, #eebfc7, #f3e3e4);
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#eebfc7), to(#f3e3e4));
+    background: -o-linear-gradient(top, #eebfc7, #f3e3e4);
 }
 
 .img-box img {
@@ -21,7 +26,7 @@ img {
     vertical-align: middle
 }
 
-.srceen {
+.screen {
     position: absolute;
     display: none;
     top: 0;
@@ -29,5 +34,130 @@ img {
     width: 100%;
     height: 100%;
     overflow: hidden;
+
+}
+
+.screen1 {
+    background: url("../img/bg.jpg") no-repeat center;
     background-size: 100% 100%;
+}
+
+.logo {
+    width: 40%;
+    margin: 10% auto 5% auto
+}
+
+/* 文字说明背景 */
+.box-bg {
+    width: 55%;
+    padding: 3% 4%;
+    margin: 0 auto 5% auto;
+    background: rgba(247, 169, 122, 0.5);
+    border: solid 1px #f3b589;
+    border-radius: 20px;
+}
+
+.box-bg-top {
+    margin-top: 15%
+}
+
+/* 文字说明样式1 带有图标的列表 */
+.box-text-1 li {
+    position: relative;
+    padding-left: 5%;
+    letter-spacing: 3px;
+}
+
+.box-text-1 li i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5%;
+    content: '';
+}
+
+.box-text-1 li i img {
+    width: 60%;
+    vertical-align: inherit;
+}
+
+/* 文字说明样式2  文字剧中显示 */
+.box-text-2 {
+    padding: 2% 0;
+    text-align: center;
+}
+
+.box-text-2 span {
+    display: inline-block;
+    min-width: 20%;
+    text-align: right;
+    padding: 0 5%;
+}
+
+/* 按钮样式 */
+.button-box {
+    width: 100%;
+    height: 7%;
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    height: 100%;
+    background: #f19149;
+    color: #fff;
+    padding: 0 40px;
+    text-shadow: 2px 2px 2px #666;
+    letter-spacing: 20px;
+    text-indent: 20px;
+    border: solid 1px #e8873e;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px -3px #b4998e;
+}
+
+.button-box-s .button {
+    margin: 0 3%;
+}
+
+/* 游戏结束 */
+.over-text {
+    margin: 20% auto 10% auto;
+    text-align: center;
+    font-size: 54px;
+    line-height: 80px;
+}
+
+.list {
+
+    height: 60%;
+    padding: 2%;
+    box-sizing: content-box;
+    border-radius: 5%;
+    background: #f6b37f;
+    box-shadow: 0 5px 30px -5px #632b00;
+}
+
+.list:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.list li {
+    width: 25%;
+    height: 25%;
+    float: left;
+    padding: 2%;
+}
+
+.list li p {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10%;
+    background: #fcee8c;
+    box-shadow: 0 0px 25px -8px #3e1b00;
+    color: #7f2d00;
+    text-align: center;
+    font-size: 6rem;
 }
