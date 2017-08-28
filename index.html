@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关联记忆</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <title>配对记忆测验</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="javascript/jquery-2.1.3.js"></script>
+
+
+</head>
+<body>
+<div class="srceen srceen1" id="screen1" style="display: block">
+    <div class="main-box">
+        <div class="img-box logo"><img src="img/logo.png"/></div>
+        <div class="img-box explain"><img src="img/text1.png"/></div>
+        <div class="botton"><img src="img/into.png" id="goscreen2"/></div>
+    </div>
+</div>
+<div class="srceen srceen2" id="screen2">
+    <div class="main-box">
+        <div class="img-box explain explainT"><img src="img/text2.png"/></div>
+        <div class="botton"><img src="img/start1.png" id="goscreen3"/></div>
+    </div>
+</div>
+<div class="srceen srceen2" id="screen3">
+    <div class="time-box img-box"><P class="time"><span id="timeScr3">15</span>秒</P><img src="img/daojishi.png"/></div>
+    <ul class="source-list source-list-practice" id="sourceListPractice">
+        <li data-role="haveImg">
+            <div class="card">
+                <p><img src="img/seat.png" data-role="cardImg"/></p>
+                <p class="back"><img src="img/block.png"/></p>
+            </div>
+        </li>
+        <li data-role="haveImg">
+            <div class="card">
+                <p><img src="img/seat.png" data-role="cardImg"/></p>
+                <p class="back"><img src="img/block.png"/></p>
+            </div>
+        </li>
+        <li data-role="haveImg">
+            <div class="card">
+                <p><img src="img/seat.png" data-role="cardImg"/></p>
+                <p class="back"><img src="img/block.png"/></p>
+            </div>
+        </li>
+        <li data-role="haveImg">
+            <div class="card">
+                <p><img src="img/seat.png" data-role="cardImg"/></p>
+                <p class="back"><img src="img/block.png"/></p>
+            </div>
+        </li>
+    </ul>
+    <div class="again ">
+        <P class="img-box"><img src="img/again.png" id="again"/></P>
+    </div>
+</div>
+
+<div class="srceen srceen2" id="screen4">
+    <div class="main-box">
+        <div class="img-box explain explainT"><img src="img/text3.png"/></div>
+        <div class="botton"><img src="img/start2.png" id="goscreen5"/></div>
+    </div>
+</div>
+<div class="srceen srceen2" id="screen5" >
+    <div class="time-box img-box"><P class="time"><span id="timeScr5">10</span>秒</P><img src="img/daojishi.png"/></div>
+    <div class="stop img-box"><img src="img/stop.png" id="stopBtn"/></div>
+    <ul class="source-list" id="sourceList">
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+        <li>
+            <img src="img/none.png"/>
+        </li>
+    </ul>
+</div>
+
+<div class="srceen srceen2" id="screenStop">
+    <div class="main-box">
+        <div class="img-box logo"><img src="img/logo2.png"/></div>
+        <div class="img-box explain"><img src="img/text4.png"/></div>
+        <div class="botton bottons"><img src="img/out.png" data-role="out"/> <img src="img/continue.png"
+                                                                                    id="continue"/></div>
+    </div>
+</div>
+
+<div class="srceen srceen1" id="screen8">
+    <div class="main-box">
+        <div class="img-box explain explainT"><img src="img/over.png"/>
+            <div id="score" class="resultOver"></div>
+        </div>
+        <div class="botton"><img src="img/out.png" data-role="out" onclick="history.go(-1)"/></div>
+    </div>
+</div>
+<script src="javascript/gameView.js"></script>
+
+<script>
+
+</script>
+</body>
+</html>
