@@ -85,6 +85,7 @@ img {
 .box-text-2 {
     padding: 2% 0;
     text-align: center;
+    font-weight: bold;
 }
 
 .box-text-2 span {
@@ -127,8 +128,48 @@ img {
     line-height: 80px;
 }
 
-.list {
+/** 游戏格子 **/
+.listTest {
+    position: absolute;
+    top: 15%;
+    right: 32.5%;
+    height: 50%;
+    padding: 2%;
+    box-sizing: content-box;
+    border-radius: 5%;
+    background: #f6b37f;
+    box-shadow: 0 5px 30px -5px #632b00;
+}
 
+.listTest:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.listTest li {
+    width: 33.3333%;
+    height: 33.3333%;
+    float: left;
+    padding: 2%;
+}
+
+.listTest li p {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10%;
+    background: #fcee8c;
+    box-shadow: 0 0px 25px -8px #3e1b00;
+    color: #7f2d00;
+    text-align: center;
+    font-size: 6rem;
+}
+
+.list {
+    position: absolute;
+    top: 15%;
+    right: 30%;
     height: 60%;
     padding: 2%;
     box-sizing: content-box;
@@ -160,4 +201,42 @@ img {
     color: #7f2d00;
     text-align: center;
     font-size: 6rem;
+}
+
+/** 游戏暂停 **/
+.stop {
+    position: absolute;
+    top: 18%;
+    right: 15%;
+    width: 7.5%;
+
+}
+
+/** 目标数字 **/
+.target {
+    position: absolute;
+    top: 18%;
+    left: 10%;
+    text-align: center;
+
+}
+
+.target p {
+    margin: 0 auto 10% auto;
+    border: solid 5px #e17f28;
+    border-radius: 50%;
+}
+
+/**  游戏时间 **/
+.time-box {
+    position: absolute;
+    top: 56%;
+    left: 10%;
+    text-align: center;
+}
+
+.time-box p {
+    margin: 10% auto 0 auto;
+    background: url("../img/daojishi.png") top center no-repeat;
+    background-size: 100% 100%;
 }

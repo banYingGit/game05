@@ -8,13 +8,13 @@
 var ArrA = [], ArrB = [],
     clickIndex,
     clickN = 0;
-
-//source 资源库
-var sourceA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-    sourceB = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32],
-    ArrA = _getArrayItems(sourceA, 16),
-    ArrB = _getArrayItems(sourceB, 16),
-    ArrC = sourceA.concat(sourceB);
+var sourceA = [],
+    sourceB = [],
+    sourceC = [],
+    ArrA = [],
+    ArrB = [],
+    ArrC = [],
+    ArrD = [];
 
 _event()
 
@@ -22,12 +22,35 @@ _event()
 // 游戏内事件处理
 function _event() {
 
+    $('#goScreen2').click(function () {
 
-    _setList()
+        $('#screen1').remove()
+        $('#screen2').show()
+
+    })
+
+    $('#goList').click(function () {
+
+        $('#screen2').remove()
+
+        $('#listBox').show()
+
+        $('#listBox #list').removeClass().addClass('listTest')
+
+        _setListTest()
+
+    })
+
 
     $('#list li').on('click', function () {
 
-        var dataRole = $(this).attr('data-role')
+        var dataRole = $(this).attr('data-role'),
+
+            dataParRole = $(this).parent('ul').attr('data-role'),
+
+            sourceNum = dataRole == 'true' ? 40 : 15
+
+        console.log('sourceNum', sourceNum)
 
         // 禁止双击
         if (clickIndex == $(this).index()) return
@@ -63,11 +86,23 @@ function _event() {
  ***/
 function _setList() {
 
-
+//source 资源库
+    sourceA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    sourceB = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
+    sourceC = [33, 34, 35, 36, 37, 38, 39, 40];
+    ArrA = _getArrayItems(sourceA, 16);
+    ArrB = _getArrayItems(sourceB, 16);
+    ArrC = _getArrayItems(sourceB, 8);
+    ArrD = sourceA.concat(sourceB).concat(sourceC);
     for (var i = 0; i < 16; i++) {
         $('#list').append('<li  data-role="' + ArrA[i] + '"><p>' + ArrA[i] + '</p></li>')
     }
 
+    $('#list').attr('data-role', 'true')
+
+    $('#time').text('360')
+
+    $('#target').text('1')
 
     //UI 样式
 
@@ -76,6 +111,36 @@ function _setList() {
     $('#list').css('width', listH)
 
     $('#list li p').css({'font-size': listH / 10, 'line-height': listH / 5 + 'px'})
+
+
+}
+
+function _setListTest() {
+
+    //source 资源库
+    sourceA = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    sourceB = [10, 11, 12, 13, 14, 15];
+    ArrA = _getArrayItems(sourceA, 9);
+    ArrB = _getArrayItems(sourceB, 6);
+    ArrD = sourceA.concat(sourceB);
+
+    for (var i = 0; i < 9; i++) {
+        $('#list').append('<li  data-role="' + ArrA[i] + '"><p>' + ArrA[i] + '</p></li>')
+    }
+
+    $('#list').attr('data-role', 'false')
+
+    $('#time').text('120')
+
+    $('#target').text('1')
+
+    //UI 样式
+
+    var listH = $('#list').height()
+
+    $('#list').css('width', listH)
+
+    $('#list li p').css({'font-size': listH / 7, 'line-height': listH / 3.5 + 'px'})
 
 
 }
