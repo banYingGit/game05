@@ -4,17 +4,17 @@
     padding: 0;
     box-sizing: border-box;
     list-style: none;
-    color: #7f2d00;
+    color: #fff;
 }
 
 body, html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #eebfc7;
-    background: -moz-linear-gradient(top, #eebfc7, #f3e3e4);
-    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#eebfc7), to(#f3e3e4));
-    background: -o-linear-gradient(top, #eebfc7, #f3e3e4);
+    background: #229199;
+    background: -moz-linear-gradient(top, #047b83, #3fa7af);
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#047b83), to(#3fa7af));
+    background: -o-linear-gradient(top, #047b83, #3fa7af);
 }
 
 .img-box img {
@@ -38,22 +38,21 @@ img {
 }
 
 .screen1 {
-    background: url("../img/bg.jpg") no-repeat center;
-    background-size: 100% 100%;
+    background: #49adb3;
 }
 
 .logo {
-    width: 40%;
+    width: 35%;
     margin: 10% auto 5% auto
 }
 
 /* 文字说明背景 */
 .box-bg {
-    width: 55%;
+    width: 60%;
     padding: 3% 4%;
     margin: 0 auto 5% auto;
-    background: rgba(247, 169, 122, 0.5);
-    border: solid 1px #f3b589;
+    background: rgba(255, 255, 255, 0.2);
+    border: solid 1px #2892a0;
     border-radius: 20px;
 }
 
@@ -62,6 +61,10 @@ img {
 }
 
 /* 文字说明样式1 带有图标的列表 */
+.box-text-1 {
+    width: 100%;
+}
+
 .box-text-1 li {
     position: relative;
     padding-left: 5%;
@@ -88,32 +91,29 @@ img {
     font-weight: bold;
 }
 
-.box-text-2 span {
-    display: inline-block;
-    min-width: 20%;
-    text-align: right;
-    padding: 0 5%;
+.box-text-2 p span {
+    color: #00479d;
 }
 
 /* 按钮样式 */
 .button-box {
     width: 100%;
-    height: 7%;
+    height: 8.5%;
     text-align: center;
 }
 
 .button {
     display: inline-block;
     height: 100%;
-    background: #f19149;
+    background: #08cbd8;
     color: #fff;
     padding: 0 40px;
     text-shadow: 2px 2px 2px #666;
     letter-spacing: 20px;
     text-indent: 20px;
-    border: solid 1px #e8873e;
-    border-radius: 15px;
-    box-shadow: 0 5px 10px -3px #b4998e;
+    border: solid 1px #08cbd8;
+    border-radius: 25px;
+    box-shadow: 0 5px 10px -3px #276e73;
 }
 
 .button-box-s .button {
@@ -129,53 +129,18 @@ img {
 }
 
 /** 游戏格子 **/
-.listTest {
-    position: absolute;
-    top: 15%;
-    right: 32.5%;
-    height: 50%;
-    padding: 2%;
-    box-sizing: content-box;
-    border-radius: 5%;
-    background: #f6b37f;
-    box-shadow: 0 5px 30px -5px #632b00;
-}
-
-.listTest:after {
-    display: block;
-    clear: both;
-    content: '';
-}
-
-.listTest li {
-    width: 33.3333%;
-    height: 33.3333%;
-    float: left;
-    padding: 2%;
-}
-
-.listTest li p {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 10%;
-    background: #fcee8c;
-    box-shadow: 0 0px 25px -8px #3e1b00;
-    color: #7f2d00;
-    text-align: center;
-    font-size: 6rem;
-}
 
 .list {
     position: absolute;
-    top: 15%;
-    right: 30%;
-    height: 60%;
+    top: 7.5%;
+    left: 7%;
+    width: 35%;
+    height: 80%;
     padding: 2%;
     box-sizing: content-box;
-    border-radius: 5%;
-    background: #f6b37f;
-    box-shadow: 0 5px 30px -5px #632b00;
+    border-radius: 30px;
+    background: #fff;
+    box-shadow: 0 5px 30px -5px #666;
 }
 
 .list:after {
@@ -185,58 +150,306 @@ img {
 }
 
 .list li {
-    width: 25%;
-    height: 25%;
-    float: left;
-    padding: 2%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
 }
 
 .list li p {
+    display: block;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    border-radius: 10%;
-    background: #fcee8c;
-    box-shadow: 0 0px 25px -8px #3e1b00;
-    color: #7f2d00;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 85%;
+}
+
+.list li p.r1-1 {
+    background-image: url("../img/res1/r1-1.png")
+}
+
+.list li p.r1-2 {
+    background-image: url("../img/res1/r1-2.png")
+}
+
+.list li p.r1-3 {
+    background-image: url("../img/res1/r1-3.png")
+}
+
+.list li p.r1-4 {
+    background-image: url("../img/res1/r1-4.png")
+}
+
+.list li p.r1-5 {
+    background-image: url("../img/res1/r1-5.png")
+}
+
+.list li p.r1-6 {
+    background-image: url("../img/res1/r1-6.png")
+}
+
+.list li p.r1-7 {
+    background-image: url("../img/res1/r1-7.png")
+}
+
+.list li p.r1-8 {
+    background-image: url("../img/res1/r1-8.png")
+}
+
+.list li p.r1-9 {
+    background-image: url("../img/res1/r1-9.png")
+}
+
+.list li p.r1-10 {
+    background-image: url("../img/res1/r1-10.png")
+}
+
+.list li p.r1-11 {
+    background-image: url("../img/res1/r1-11.png")
+}
+
+.list li p.r1-12 {
+    background-image: url("../img/res1/r1-12.png")
+}
+
+.list li p.r1-13 {
+    background-image: url("../img/res1/r1-13.png")
+}
+
+.list li p.r1-14 {
+    background-image: url("../img/res1/r1-14.png")
+}
+
+.list li p.r1-15 {
+    background-image: url("../img/res1/r1-15.png")
+}
+
+.list li p.r1-16 {
+    background-image: url("../img/res1/r1-16.png")
+}
+
+.list li p.r1-17 {
+    background-image: url("../img/res1/r1-17.png")
+}
+
+.list li p.r1-18 {
+    background-image: url("../img/res1/r1-18.png")
+}
+
+.list li p.r1-19 {
+    background-image: url("../img/res1/r1-19.png")
+}
+
+.list li p.r1-20 {
+    background-image: url("../img/res1/r1-20.png")
+}
+
+.list li p.r1-21 {
+    background-image: url("../img/res1/r1-21.png")
+}
+
+.list li p.r1-22 {
+    background-image: url("../img/res1/r1-22.png")
+}
+
+.list li p.r1-23 {
+    background-image: url("../img/res1/r1-23.png")
+}
+
+.list li p.r1-24 {
+    background-image: url("../img/res1/r1-24.png")
+}
+
+.list li p.r1-25 {
+    background-image: url("../img/res1/r1-25.png")
+}
+
+.list li p.r1-26 {
+    background-image: url("../img/res1/r1-26.png")
+}
+
+.list li p.r1-27 {
+    background-image: url("../img/res1/r1-27.png")
+}
+
+.list li p.r1-28 {
+    background-image: url("../img/res1/r1-28.png")
+}
+
+.list li p.r2-1 {
+    background-image: url("../img/res2/r2-1.png")
+}
+
+.list li p.r2-2 {
+    background-image: url("../img/res2/r2-2.png")
+}
+
+.list li p.r2-3 {
+    background-image: url("../img/res2/r2-3.png")
+}
+
+.list li p.r2-4 {
+    background-image: url("../img/res2/r2-4.png")
+}
+
+.list li p.r2-5 {
+    background-image: url("../img/res2/r2-5.png")
+}
+
+.list li p.r2-6 {
+    background-image: url("../img/res2/r2-6.png")
+}
+
+.list li p.r2-7 {
+    background-image: url("../img/res2/r2-7.png")
+}
+
+.list li p.r2-8 {
+    background-image: url("../img/res2/r2-8.png")
+}
+
+.list li p.r2-9 {
+    background-image: url("../img/res2/r2-9.png")
+}
+
+.list li p.r2-10 {
+    background-image: url("../img/res2/r2-10.png")
+}
+
+.list li p.r2-11 {
+    background-image: url("../img/res2/r2-11.png")
+}
+
+.list li p.r2-12 {
+    background-image: url("../img/res2/r2-12.png")
+}
+
+.list li p.r2-13 {
+    background-image: url("../img/res2/r2-13.png")
+}
+
+.list li p.r2-14 {
+    background-image: url("../img/res2/r2-14.png")
+}
+
+.list li p.r2-15 {
+    background-image: url("../img/res2/r2-15.png")
+}
+
+.list li p.r2-16 {
+    background-image: url("../img/res2/r2-16.png")
+}
+
+.list li p.r2-17 {
+    background-image: url("../img/res2/r2-17.png")
+}
+
+.list li p.r2-18 {
+    background-image: url("../img/res2/r2-18.png")
+}
+
+.list li p.r2-19 {
+    background-image: url("../img/res2/r2-19.png")
+}
+
+.list li p.r2-20 {
+    background-image: url("../img/res2/r2-20.png")
+}
+
+.list li p.r2-21 {
+    background-image: url("../img/res2/r2-21.png")
+}
+
+.list li p.r2-22 {
+    background-image: url("../img/res2/r2-22.png")
+}
+
+.list li p.r2-23 {
+    background-image: url("../img/res2/r2-23.png")
+}
+
+.list li p.r2-24 {
+    background-image: url("../img/res2/r2-24.png")
+}
+
+.list li p.r2-25 {
+    background-image: url("../img/res2/r2-25.png")
+}
+
+.list li p.r2-26 {
+    background-image: url("../img/res2/r2-26.png")
+}
+
+.list li p.r2-27 {
+    background-image: url("../img/res2/r2-27.png")
+}
+
+.list li p.r2-28 {
+    background-image: url("../img/res2/r2-28.png")
+}
+
+.list li p.r2-29 {
+    background-image: url("../img/res2/r2-29.png")
+}
+
+.list li p.r2-30 {
+    background-image: url("../img/res2/r2-30.png")
+}
+
+.list li p.r2-31 {
+    background-image: url("../img/res2/r2-31.png")
+}
+
+.list li p.r2-32 {
+    background-image: url("../img/res2/r2-32.png")
+}
+
+/** 图片右侧 **/
+.list-right {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 40%;
+
+}
+
+.list-right .list-right-title {
     text-align: center;
-    font-size: 6rem;
+    line-height: 200%;
+}
+
+.list-right .button-box p.button {
+    display: block;
+    width: 50%;
+    margin: 20% auto 0 auto;
 }
 
 /** 游戏暂停 **/
 .stop {
     position: absolute;
-    top: 18%;
-    right: 15%;
+    bottom: 7%;
+    right: 8%;
     width: 7.5%;
 
-}
-
-/** 目标数字 **/
-.target {
-    position: absolute;
-    top: 18%;
-    left: 10%;
-    text-align: center;
-
-}
-
-.target p {
-    margin: 0 auto 10% auto;
-    border: solid 5px #e17f28;
-    border-radius: 50%;
 }
 
 /**  游戏时间 **/
 .time-box {
     position: absolute;
-    top: 56%;
+    top: 10%;
     left: 10%;
     text-align: center;
+
 }
 
 .time-box p {
     margin: 10% auto 0 auto;
     background: url("../img/daojishi.png") top center no-repeat;
     background-size: 100% 100%;
+    color: #057b83;
+}
+
+.time-box p span {
+    color: #057b83;
 }

@@ -1,32 +1,105 @@
 /**
  * Created by banYing on 2017/8/24 0024.
  */
-/* 全局变量
- * clickIndex：点击索引
- * clickN：点击次数
- * atuoTime：倒计时
- * errorNum ：错误点击次数
- * maxNum：正确点击最大值
- * sysTimeN：游戏开始时间
- * sysTimeO：游戏结束时间
- * sumTime：总计用时
- */
-var clickIndex,
-    clickN = 0,
-    atuoTime,
-    errorNum = 0,
-    maxNum,
-    sysTimeN,
-    sysTimeO,
-    sumTime = 0;
 
-var sourceA = [],
-    sourceB = [],
-    sourceC = [],
-    ArrA = [],
-    ArrB = [],
-    ArrC = [],
-    ArrD = [];
+
+/* 全局变量
+ * setNum ：点击次数
+ * getChoseA：第一部分返回参数
+ * getChoseB: 第二部分返回参数
+ * getChoseA与getChoseB 返回格式  误删 {name:显示图片名称，chose：用户选择，correct：正确选择，time：用户用时，result：用户选择是否争取}
+ * getSumA：第一部分总计分返回参数
+ * getSumB：第二部分总计分返回参数
+ * getSumA与getSumB 返回格式 误删 （sumTime:总计用时，averageTime：平均用时，averageTimeCor:正确题目平均用时）
+ *
+ */
+
+
+var setNum = 1,
+    getChoseA = [],
+    getChoseB = [],
+    getSumA={},
+    getSumB = {};
+
+/* 全局变量
+ * sourceA：人造物
+ * sourceB：自热物
+ * source40: 第一部分答题数组
+ * source20：第二部分答题数组
+ *
+ */
+
+var sourceA = [
+        {'name': 'r1-1', 'attr': 'create'},
+        {'name': 'r1-2', 'attr': 'create'},
+        {'name': 'r1-3', 'attr': 'create'},
+        {'name': 'r1-4', 'attr': 'create'},
+        {'name': 'r1-5', 'attr': 'create'},
+        {'name': 'r1-6', 'attr': 'create'}
+        // {'name': 'r1-7', 'attr': 'create'},
+        // {'name': 'r1-8', 'attr': 'create'},
+        // {'name': 'r1-9', 'attr': 'create'},
+        // {'name': 'r1-10', 'attr': 'create'},
+        // {'name': 'r1-11', 'attr': 'create'},
+        // {'name': 'r1-12', 'attr': 'create'},
+        // {'name': 'r1-13', 'attr': 'create'},
+        // {'name': 'r1-14', 'attr': 'create'},
+        // {'name': 'r1-15', 'attr': 'create'},
+        // {'name': 'r1-16', 'attr': 'create'},
+        // {'name': 'r1-17', 'attr': 'create'},
+        // {'name': 'r1-18', 'attr': 'create'},
+        // {'name': 'r1-19', 'attr': 'create'},
+        // {'name': 'r1-20', 'attr': 'create'},
+        // {'name': 'r1-21', 'attr': 'create'},
+        // {'name': 'r1-22', 'attr': 'create'},
+        // {'name': 'r1-23', 'attr': 'create'},
+        // {'name': 'r1-24', 'attr': 'create'},
+        // {'name': 'r1-25', 'attr': 'create'},
+        // {'name': 'r1-26', 'attr': 'create'},
+        // {'name': 'r1-27', 'attr': 'create'},
+        // {'name': 'r1-28', 'attr': 'create'}
+    ],
+    sourceB = [
+        {'name': 'r2-1', 'attr': 'natural'},
+        {'name': 'r2-2', 'attr': 'natural'},
+        {'name': 'r2-3', 'attr': 'natural'},
+        {'name': 'r2-4', 'attr': 'natural'},
+        {'name': 'r2-5', 'attr': 'natural'}
+        // {'name': 'r2-6', 'attr': 'natural'},
+        // {'name': 'r2-7', 'attr': 'natural'},
+        // {'name': 'r2-8', 'attr': 'natural'},
+        // {'name': 'r2-9', 'attr': 'natural'},
+        // {'name': 'r2-10', 'attr': 'natural'},
+        // {'name': 'r2-11', 'attr': 'natural'},
+        // {'name': 'r2-12', 'attr': 'natural'},
+        // {'name': 'r2-13', 'attr': 'natural'},
+        // {'name': 'r2-14', 'attr': 'natural'},
+        // {'name': 'r2-15', 'attr': 'natural'},
+        // {'name': 'r2-16', 'attr': 'natural'},
+        // {'name': 'r2-17', 'attr': 'natural'},
+        // {'name': 'r2-18', 'attr': 'natural'},
+        // {'name': 'r2-19', 'attr': 'natural'},
+        // {'name': 'r2-20', 'attr': 'natural'},
+        // {'name': 'r2-21', 'attr': 'natural'},
+        // {'name': 'r2-22', 'attr': 'natural'},
+        // {'name': 'r2-23', 'attr': 'natural'},
+        // {'name': 'r2-24', 'attr': 'natural'},
+        // {'name': 'r2-25', 'attr': 'natural'},
+        // {'name': 'r2-26', 'attr': 'natural'},
+        // {'name': 'r2-27', 'attr': 'natural'},
+        // {'name': 'r2-28', 'attr': 'natural'},
+        // {'name': 'r2-29', 'attr': 'natural'},
+        // {'name': 'r2-30', 'attr': 'natural'},
+        // {'name': 'r2-31', 'attr': 'natural'},
+        // {'name': 'r2-32', 'attr': 'natural'}
+    ],
+    $res = sourceA.concat(sourceB),
+    source40 = _getArrayItems($res, 5),
+    source20 = _getArrayItems($res, 5);
+
+// console.log('source40', source40)
+// console.log('source20', source20)
+
 
 _event()
 
@@ -44,117 +117,295 @@ function _event() {
     $('#goList').click(function () {
 
         $('#screen2').remove()
-
-        $('#listBox').show()
-
-        $('#listBox #list').removeClass().addClass('listTest')
-
-        _setListTest()
-
-        _time(20, function () {
-
-            $('#screen3').show()
-            $('#listBox').hide()
-            $('#listBox #list').removeClass().empty()
-
-        })
+        $('#list').show()
+        _setListpartA()
 
     })
+
     $('#start').click(function () {
 
         $('#screen3').remove()
 
-        $('#listBox').show()
+        $('#list').show()
 
-        $('#listBox #list').removeClass().addClass('list')
+        setNum = 1;
 
-        _setList()
-
-        sysTimeN = new Date()
-
-        _time(60, function () {
-
-            sysTimeO = new Date()
-
-            var $cur$Time = (sysTimeO - sysTimeN) / 1000
-
-            sumTime = parseInt(sumTime + $cur$Time)
-
-            maxNum = +($('#target').text()) - 1
-
-            $('#listBox').remove()
-
-            $('#over').show()
-
-            // console.log('maxNum,errorNum,sumTime>>>>>>>>>>>2', maxNum, errorNum, sumTime)
-            _over()
-        })
-
-    })
-    $('#stop').click(function () {
-
-        clearInterval(atuoTime)
-        $('#listBox').hide()
-        $('#stopBox').show()
-
-        sysTimeO = new Date()
-
-        var $cur$Time = (sysTimeO - sysTimeN) / 1000
-
-        sumTime = parseInt(sumTime + $cur$Time)
-
-    })
-    $('#continue').click(function () {
-
-        $('#listBox').show()
-        $('#stopBox').hide()
-        var $time = $('#time').text()
-
-        sysTimeN = new Date()
-
-        _time($time, function () {
-
-            if ($('#screen3').length > 0) {
-
-                $('#screen3').show()
-                $('#listBox').hide()
-                $('#listBox #list').removeClass().empty()
-
-            } else {
-
-                maxNum = +($('#target').text()) - 1
-
-                $('#listBox').remove()
-
-                $('#over').show()
-
-                sysTimeO = new Date()
-
-                var $cur$Time = (sysTimeO - sysTimeN) / 1000
-
-                sumTime = parseInt(sumTime + $cur$Time)
-
-                console.log('maxNum,errorNum,sumTime>>>>>>>>>>>>1', maxNum, errorNum, sumTime)
-                _over()
-
-            }
-
-
-        })
+        _setListpartB()
 
     })
 
-    $('.button[data-role="out"]').click(function () {
 
-        //游戏点击退出按钮
-        _out()
+}
+// 测试数据
+// var Aarr = [], Barr = []
+
+// 设置第一部分答题界面
+function _setListpartA() {
+
+
+    //清空界面
+    $('#list').attr('data-part', 'A')
+
+    $('#list li p').removeClass().removeAttr()
+
+    $('#time').text('4')
+
+    $('#list').removeAttr('data-click')
+
+    // 测试数据
+    // Aarr.push(source40[setNum - 1].name)
+    //设置问题
+
+    $('#list li p').addClass(source40[setNum - 1].name).attr({
+        'data-role': source40[setNum - 1].attr,
+        'data-name': source40[setNum - 1].name
+    })
+
+
+    //设置选择按钮
+
+
+    $('#listButA').attr({'data-role': 'create', 'onclick': '_clickButA(event)'})
+
+    $('#listButB').attr({'data-role': 'natural', 'onclick': '_clickButA(event)'})
+
+
+    //设置倒计时
+    _time(4, function () {
+
+
+        if ($('#list').attr('data-click') != 'yes') {
+
+            // 没有点击选择，到时自动添加选项对象
+
+            var imgEl = $('#list li p').attr('data-role'),
+
+                $name = $('#list li p').attr('data-name');
+
+
+            var $key = 'number' + setNum,
+
+                $chose = '{"name":"' + $name + '","chose":"","correct":"' + imgEl + '","time":"4","result":"false"}',
+
+                $val = JSON.parse($chose),
+
+                $obj = {};
+
+            $obj[$key] = $val
+
+
+            getChoseA.push($obj)
+
+        }
+
+        setNum = setNum + 1
+
+        //6改41
+        if (setNum < 6) {
+
+            _setListpartA()
+
+        } else {
+
+            $('#list').hide()
+
+            $('#screen3').show()
+
+            console.log('getChoseA>>>>>>>000', getChoseA)
+            // 测试数据
+            // console.log('Aarr', Aarr)
+        }
 
     })
+
 
 }
 
+// 设置第二部分答题界面
+function _setListpartB() {
+
+
+    //清空界面
+
+    $('#list').attr('data-part', 'B').removeAttr('data-click')
+
+    $('#list li p').removeClass()
+
+    $('#time').text('4')
+
+
+    var $dataRole = '';
+
+    var $nameArr = []
+
+    for (var i = 0; i < source40.length; i++) {
+
+        $nameArr.push(source40[i].name)
+
+    }
+
+
+    if ($.inArray(source20[setNum - 1].name, $nameArr) != -1) {
+
+        $dataRole = 'yes'
+
+    } else {
+
+        $dataRole = 'no'
+
+    }
+    console.log('$dataRole', $dataRole)
+
+    //设置问题
+
+    // 测试数据
+    // Barr.push(source20[setNum - 1].name)
+
+    $('#list li p').addClass(source20[setNum - 1].name).attr({
+        'data-role': $dataRole,
+        'data-name': source20[setNum - 1].name
+    })
+
+
+    //设置选择按钮
+
+    $('#listButA').attr({'data-role': 'yes', 'onclick': '_clickButA(event)'}).text('出现过')
+
+    $('#listButB').attr({'data-role': 'no', 'onclick': '_clickButA(event)'}).text('没出现过')
+
+
+    //设置倒计时
+    _time(4, function () {
+
+
+        if ($('#list').attr('data-click') != 'yes') {
+
+            // 没有点击选择，到时自动添加选项对象
+
+            var imgEl = $('#list li p').attr('data-role'),
+
+                $name = $('#list li p').attr('data-name');
+
+
+            var $key = 'number' + setNum,
+
+                $chose = '{"name":"' + $name + '","chose":"","correct":"' + imgEl + '","time":"4","result":"false"}',
+
+                $val = JSON.parse($chose),
+
+                $obj = {};
+
+            $obj[$key] = $val
+
+
+            getChoseB.push($obj)
+
+
+        }
+
+
+        setNum = setNum + 1
+
+        //6改21 时间到了结束
+        if (setNum < 6) {
+
+            _setListpartB()
+
+        } else {
+
+            $('#list').remove()
+
+            $('#over').show()
+
+            _over()
+            // console.log('getChoseB>>>>>>>11', getChoseB)
+            // console.log('Barr', Barr)
+        }
+
+
+    })
+
+
+}
+
+// 点击按钮事件处理
+function _clickButA(e) {
+
+    $('#list').attr('data-click', 'yes')
+
+    var $dataRole = $(e.target).attr('data-role'),
+
+        $name = $('#list li p').attr('data-name'),
+
+        imgEl = $('#list li p').attr('data-role'),
+
+        $time = 4 - (+($('#time').text())) > 0 ? 4 - (+($('#time').text())) : 1,
+
+        $result = $dataRole == imgEl ? true : false;
+
+
+    var $key = 'number' + setNum,
+
+        $chose = '{"name":"' + $name + '","chose":"' + $dataRole + '","correct":"' + imgEl + '","time":"' + $time + '","result":"' + $result + '"}',
+
+        $val = JSON.parse($chose),
+
+        $obj = {};
+
+    $obj[$key] = $val
+
+    if ($('#list').attr('data-part') == "A") {
+
+        getChoseA.push($obj)
+
+        $('#listButA').removeAttr('onclick')
+
+        $('#listButB').removeAttr('onclick')
+
+
+    } else if ($('#list').attr('data-part') == "B") {
+
+        getChoseB.push($obj)
+
+        clearInterval(atuoTime)
+
+        setNum = setNum + 1
+
+        //6改21  点击结束
+        if (setNum < 6) {
+
+            _setListpartB()
+
+        } else {
+
+            $('#list').remove()
+
+            $('#over').show()
+
+            _over()
+
+            // console.log('getChoseB>>>>>>>22', getChoseB)
+            // 测试数据
+            // console.log('Barr》》》', Barr)
+        }
+
+
+    }
+
+
+}
+
+
 //游戏结束
 function _over() {
+
+
+    console.log('getChoseB', getChoseB)
+    console.log('getChoseA', getChoseA)
+
+    var $choseA = getChoseA,
+
+        $choseB = getChoseB;
 
 
     /* ajax 请求接口路径，返回json 数据
@@ -183,175 +434,6 @@ function _out() {
 
 }
 
-/*** 数字点击事件 ***/
-function _clickEvent(e) {
-
-
-    var dataRole = $(e.target).parent('li').attr('data-role'),
-
-        dataParRole = $(e.target).parents('ul').attr('data-role'),
-
-        sourceNum
-
-
-    // 禁止双击
-    if (clickIndex == $(this).index()) return
-
-    // console.log('clickN,sourceNum', clickN, sourceNum)
-
-    if (dataRole == ArrD[clickN]) {
-
-        var $valNew;
-
-        if (dataParRole != 'true') {
-
-            $valNew = ArrB[clickN] ? ArrB[clickN] : ''
-
-            sourceNum = 15
-
-        } else {
-
-            if (clickN <= 15) {
-
-                $valNew = ArrB[clickN]
-
-            } else {
-
-                $valNew = ArrC[clickN - 16] ? ArrC[clickN - 16] : ''
-            }
-
-            sourceNum = 40
-
-        }
-
-        $(e.target).parent('li').attr('data-role', $valNew).children('p').text($valNew)
-
-        // console.log('点击对了', $valNew)
-
-        clickIndex = $(e.target).parent('li').index()
-
-        clickN = clickN + 1
-
-        $('#target').text(ArrD[clickN])
-
-        if (clickN >= sourceNum) {
-
-            //点击完成
-
-            clearInterval(atuoTime)
-
-            if (dataParRole != 'true') {
-
-                $('#screen3').show()
-
-                $('#listBox').hide()
-
-                $('#listBox #list').removeClass().empty()
-
-            } else {
-
-                sysTimeO = new Date()
-
-                var $cur$Time = (sysTimeO - sysTimeN) / 1000
-
-                sumTime = parseInt(sumTime + $cur$Time)
-
-                maxNum = ArrD[39]
-
-                // console.log('maxNum,errorNum,sumTime>>>>>>>>3', maxNum, errorNum, sumTime)
-
-                _over()
-                $('#listBox').remove()
-
-                $('#over').show()
-
-            }
-
-            return
-
-        }
-
-
-    } else {
-
-        if (dataParRole == 'true') {
-
-            errorNum = errorNum + 1
-
-        }
-        console.log('错误')
-    }
-
-
-}
-
-/*** 设置列表正式测验 ***/
-function _setList() {
-
-//source 资源库
-    sourceA = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-    sourceB = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
-    sourceC = [33, 34, 35, 36, 37, 38, 39, 40];
-    ArrA = _getArrayItems(sourceA, 16);
-    ArrB = _getArrayItems(sourceB, 16);
-    ArrC = _getArrayItems(sourceC, 8);
-    ArrD = sourceA.concat(sourceB).concat(sourceC);
-
-    clickIndex = ''
-
-    clickN = 0;
-
-    for (var i = 0; i < 16; i++) {
-        $('#list').append('<li  onclick="_clickEvent(event)"  data-role="' + ArrA[i] + '"><p>' + ArrA[i] + '</p></li>')
-    }
-
-    $('#list').attr('data-role', 'true')
-
-    $('#time').text('360')
-
-    $('#target').text('1')
-
-    //UI 样式
-
-    var listH = $('#list').height()
-
-    $('#list').css('width', listH)
-
-    $('#list li p').css({'font-size': listH / 10, 'line-height': listH / 5 + 'px'})
-
-
-}
-
-/*** 设置列表练习题 ***/
-function _setListTest() {
-
-    //source 资源库
-    sourceA = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    sourceB = [10, 11, 12, 13, 14, 15];
-    ArrA = _getArrayItems(sourceA, 9);
-    ArrB = _getArrayItems(sourceB, 6);
-    ArrD = sourceA.concat(sourceB);
-
-    for (var i = 0; i < 9; i++) {
-        $('#list').append('<li onclick="_clickEvent(event)"  data-role="' + ArrA[i] + '"><p>' + ArrA[i] + '</p></li>')
-    }
-
-    $('#list').attr('data-role', 'false')
-
-    $('#time').text('120')
-
-    $('#target').text('1')
-
-    //UI 样式
-
-    var listH = $('#list').height()
-
-    $('#list').css('width', listH)
-
-    $('#list li p').css({'font-size': listH / 7, 'line-height': listH / 3.5 + 'px'})
-
-
-}
 
 /*** 倒计时
  * i：时间
@@ -364,6 +446,7 @@ function _time(i, fn) {
         i = i - 1
 
         $('#time').text(i)
+
         if (i == 0) {
 
             clearInterval(atuoTime)
