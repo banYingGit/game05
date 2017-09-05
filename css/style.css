@@ -415,6 +415,7 @@ img {
 }
 
 .list-right .list-right-title {
+    display: none;
     text-align: center;
     line-height: 200%;
 }
@@ -423,6 +424,10 @@ img {
     display: block;
     width: 50%;
     margin: 20% auto 0 auto;
+    transition: all 0.2s;
+}
+.list-right .button-box p.button.gray{
+    background: #d1d1d1;
 }
 
 /** 游戏暂停 **/

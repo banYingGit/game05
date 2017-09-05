@@ -4,101 +4,57 @@
 
 
 /* 全局变量
+ * atuoTime：倒计时
  * setNum ：点击次数
  * getChoseA：第一部分返回参数
  * getChoseB: 第二部分返回参数
- * getChoseA与getChoseB 返回格式  误删 {name:显示图片名称，chose：用户选择，correct：正确选择，time：用户用时，result：用户选择是否争取}
+ * getChoseA与getChoseB 返回格式  误删 {name:显示图片名称，chose：用户选择，correct：正确选择，time：用户用时，result：用户选择是否正确}
  * getSumA：第一部分总计分返回参数
  * getSumB：第二部分总计分返回参数
- * getSumA与getSumB 返回格式 误删 （sumTime:总计用时，averageTime：平均用时，averageTimeCor:正确题目平均用时）
+ * getSumA与getSumB 返回格式 误删 （sumTime:总计用时，averageSumTime：平均总用时, averageTime：平均用时，averageTimeCor:正确题目平均用时,corLength：答对数目）
  *
  */
 
 
-var setNum = 1,
+var atuoTime,
+    setNum = 1,
     getChoseA = [],
     getChoseB = [],
-    getSumA={},
-    getSumB = {};
+    getSumA = {"sumTime": "", "averageSumTime": "", "averageTime": "", "averageTimeCor": "", "corLength": ""},
+    getSumB = {"sumTime": "", "averageSumTime": "", "averageTime": "", "averageTimeCor": "", "corLength": ""};
 
 /* 全局变量
  * sourceA：人造物
  * sourceB：自热物
+ *
+ */
+var sourceA = [], sourceB = [];
+
+for (var i = 1; i < 29; i++) {
+
+    var $obj = {'name': 'r1-' + i, 'attr': 'create'};
+
+    sourceA.push($obj)
+
+}
+
+for (var i = 1; i < 33; i++) {
+
+    var $obj = {'name': 'r2-' + i, 'attr': 'natural'};
+
+    sourceB.push($obj)
+
+}
+
+/* 全局变量
  * source40: 第一部分答题数组
  * source20：第二部分答题数组
  *
  */
 
-var sourceA = [
-        {'name': 'r1-1', 'attr': 'create'},
-        {'name': 'r1-2', 'attr': 'create'},
-        {'name': 'r1-3', 'attr': 'create'},
-        {'name': 'r1-4', 'attr': 'create'},
-        {'name': 'r1-5', 'attr': 'create'},
-        {'name': 'r1-6', 'attr': 'create'}
-        // {'name': 'r1-7', 'attr': 'create'},
-        // {'name': 'r1-8', 'attr': 'create'},
-        // {'name': 'r1-9', 'attr': 'create'},
-        // {'name': 'r1-10', 'attr': 'create'},
-        // {'name': 'r1-11', 'attr': 'create'},
-        // {'name': 'r1-12', 'attr': 'create'},
-        // {'name': 'r1-13', 'attr': 'create'},
-        // {'name': 'r1-14', 'attr': 'create'},
-        // {'name': 'r1-15', 'attr': 'create'},
-        // {'name': 'r1-16', 'attr': 'create'},
-        // {'name': 'r1-17', 'attr': 'create'},
-        // {'name': 'r1-18', 'attr': 'create'},
-        // {'name': 'r1-19', 'attr': 'create'},
-        // {'name': 'r1-20', 'attr': 'create'},
-        // {'name': 'r1-21', 'attr': 'create'},
-        // {'name': 'r1-22', 'attr': 'create'},
-        // {'name': 'r1-23', 'attr': 'create'},
-        // {'name': 'r1-24', 'attr': 'create'},
-        // {'name': 'r1-25', 'attr': 'create'},
-        // {'name': 'r1-26', 'attr': 'create'},
-        // {'name': 'r1-27', 'attr': 'create'},
-        // {'name': 'r1-28', 'attr': 'create'}
-    ],
-    sourceB = [
-        {'name': 'r2-1', 'attr': 'natural'},
-        {'name': 'r2-2', 'attr': 'natural'},
-        {'name': 'r2-3', 'attr': 'natural'},
-        {'name': 'r2-4', 'attr': 'natural'},
-        {'name': 'r2-5', 'attr': 'natural'}
-        // {'name': 'r2-6', 'attr': 'natural'},
-        // {'name': 'r2-7', 'attr': 'natural'},
-        // {'name': 'r2-8', 'attr': 'natural'},
-        // {'name': 'r2-9', 'attr': 'natural'},
-        // {'name': 'r2-10', 'attr': 'natural'},
-        // {'name': 'r2-11', 'attr': 'natural'},
-        // {'name': 'r2-12', 'attr': 'natural'},
-        // {'name': 'r2-13', 'attr': 'natural'},
-        // {'name': 'r2-14', 'attr': 'natural'},
-        // {'name': 'r2-15', 'attr': 'natural'},
-        // {'name': 'r2-16', 'attr': 'natural'},
-        // {'name': 'r2-17', 'attr': 'natural'},
-        // {'name': 'r2-18', 'attr': 'natural'},
-        // {'name': 'r2-19', 'attr': 'natural'},
-        // {'name': 'r2-20', 'attr': 'natural'},
-        // {'name': 'r2-21', 'attr': 'natural'},
-        // {'name': 'r2-22', 'attr': 'natural'},
-        // {'name': 'r2-23', 'attr': 'natural'},
-        // {'name': 'r2-24', 'attr': 'natural'},
-        // {'name': 'r2-25', 'attr': 'natural'},
-        // {'name': 'r2-26', 'attr': 'natural'},
-        // {'name': 'r2-27', 'attr': 'natural'},
-        // {'name': 'r2-28', 'attr': 'natural'},
-        // {'name': 'r2-29', 'attr': 'natural'},
-        // {'name': 'r2-30', 'attr': 'natural'},
-        // {'name': 'r2-31', 'attr': 'natural'},
-        // {'name': 'r2-32', 'attr': 'natural'}
-    ],
-    $res = sourceA.concat(sourceB),
-    source40 = _getArrayItems($res, 5),
-    source20 = _getArrayItems($res, 5);
-
-// console.log('source40', source40)
-// console.log('source20', source20)
+var $res = sourceA.concat(sourceB),
+    source40 = _getArrayItems($res, 40),
+    source20 = _getArrayItems($res, 20);
 
 
 _event()
@@ -134,6 +90,140 @@ function _event() {
 
     })
 
+    $('#stop').click(function () {
+
+        clearInterval(atuoTime)
+
+        $('#list').hide()
+
+        $('#stopBox').show()
+
+
+    })
+
+    $('#continue').click(function () {
+
+        var $time = $('#time').text(),
+
+            $part = $('#list').attr('data-part');
+
+        $('#list').show()
+
+        $('#stopBox').hide()
+
+        if ($part == 'A') {
+
+            //设置倒计时
+            _time($time, function () {
+
+                if ($('#list').attr('data-click') != 'yes') {
+
+                    // 没有点击选择，到时自动添加选项对象
+
+                    var imgEl = $('#list li p').attr('data-role'),
+
+                        $name = $('#list li p').attr('data-name');
+
+
+                    var $key = 'number' + setNum,
+
+                        $chose = '{"name":"' + $name + '","chose":"","correct":"' + imgEl + '","time":"4","result":"false"}',
+
+                        $val = JSON.parse($chose),
+
+                        $obj = {};
+
+                    $obj[$key] = $val
+
+
+                    getChoseA.push($obj)
+
+                }
+
+                setNum = setNum + 1
+
+                //6改41
+                if (setNum < 41) {
+
+                    _setListpartA()
+
+                } else {
+
+                    $('#list').hide()
+
+                    $('#screen3').show()
+
+                    // 测试数据
+                    // console.log('Aarr', Aarr)
+                }
+
+            })
+
+        } else if ($part == 'B') {
+
+
+            //设置倒计时
+            _time($time, function () {
+
+
+                if ($('#list').attr('data-click') != 'yes') {
+
+                    // 没有点击选择，到时自动添加选项对象
+
+                    var imgEl = $('#list li p').attr('data-role'),
+
+                        $name = $('#list li p').attr('data-name');
+
+
+                    var $key = 'number' + setNum,
+
+                        $chose = '{"name":"' + $name + '","chose":"","correct":"' + imgEl + '","time":"4","result":"false"}',
+
+                        $val = JSON.parse($chose),
+
+                        $obj = {};
+
+                    $obj[$key] = $val
+
+
+                    getChoseB.push($obj)
+
+
+                }
+
+
+                setNum = setNum + 1
+
+                //6改21 时间到了结束
+                if (setNum < 21) {
+
+                    _setListpartB()
+
+                } else {
+
+                    $('#list').remove()
+
+                    $('#over').show()
+
+                    _over()
+                    // console.log('getChoseB>>>>>>>11', getChoseB)
+                    // console.log('Barr', Barr)
+                }
+
+
+            })
+
+
+        }
+
+
+    })
+
+    $('.button[data-role="out"]').click(function () {
+
+        _out()
+    })
+
 
 }
 // 测试数据
@@ -165,9 +255,9 @@ function _setListpartA() {
     //设置选择按钮
 
 
-    $('#listButA').attr({'data-role': 'create', 'onclick': '_clickButA(event)'})
+    $('#listButA').attr({'data-role': 'create', 'onclick': '_clickButA(event)'}).removeClass('gray')
 
-    $('#listButB').attr({'data-role': 'natural', 'onclick': '_clickButA(event)'})
+    $('#listButB').attr({'data-role': 'natural', 'onclick': '_clickButA(event)'}).removeClass('gray')
 
 
     //设置倒计时
@@ -201,7 +291,7 @@ function _setListpartA() {
         setNum = setNum + 1
 
         //6改41
-        if (setNum < 6) {
+        if (setNum < 41) {
 
             _setListpartA()
 
@@ -224,6 +314,8 @@ function _setListpartA() {
 // 设置第二部分答题界面
 function _setListpartB() {
 
+
+    $('#pastBText').show()
 
     //清空界面
 
@@ -254,7 +346,7 @@ function _setListpartB() {
         $dataRole = 'no'
 
     }
-    console.log('$dataRole', $dataRole)
+
 
     //设置问题
 
@@ -269,9 +361,9 @@ function _setListpartB() {
 
     //设置选择按钮
 
-    $('#listButA').attr({'data-role': 'yes', 'onclick': '_clickButA(event)'}).text('出现过')
+    $('#listButA').attr({'data-role': 'yes', 'onclick': '_clickButA(event)'}).text('出现过').removeClass('gray')
 
-    $('#listButB').attr({'data-role': 'no', 'onclick': '_clickButA(event)'}).text('没出现过')
+    $('#listButB').attr({'data-role': 'no', 'onclick': '_clickButA(event)'}).text('没出现过').removeClass('gray')
 
 
     //设置倒计时
@@ -307,7 +399,7 @@ function _setListpartB() {
         setNum = setNum + 1
 
         //6改21 时间到了结束
-        if (setNum < 6) {
+        if (setNum < 21) {
 
             _setListpartB()
 
@@ -358,9 +450,9 @@ function _clickButA(e) {
 
         getChoseA.push($obj)
 
-        $('#listButA').removeAttr('onclick')
+        $('#listButA').removeAttr('onclick').addClass('gray')
 
-        $('#listButB').removeAttr('onclick')
+        $('#listButB').removeAttr('onclick').addClass('gray')
 
 
     } else if ($('#list').attr('data-part') == "B") {
@@ -372,7 +464,7 @@ function _clickButA(e) {
         setNum = setNum + 1
 
         //6改21  点击结束
-        if (setNum < 6) {
+        if (setNum < 21) {
 
             _setListpartB()
 
@@ -400,26 +492,87 @@ function _clickButA(e) {
 function _over() {
 
 
-    console.log('getChoseB', getChoseB)
-    console.log('getChoseA', getChoseA)
-
     var $choseA = getChoseA,
 
-        $choseB = getChoseB;
+        $timeArrA = [],
 
+        $corArrA = [];
+
+
+    $.each($choseA, function (i, n) {
+
+        $.each(n, function (j, k) {
+
+            $timeArrA.push(k.time)
+
+            if (k.result == 'true') {
+
+                $corArrA.push(k.time)
+            }
+
+        })
+
+    })
+
+    getSumA.sumTime = eval($timeArrA.join("+"))
+
+    getSumA.averageSumTime = eval($corArrA.join("+"))
+
+    getSumA.averageTime = getSumA.sumTime / $choseA.length
+
+    getSumA.averageTimeCor = getSumA.averageSumTime / $corArrA.length
+
+    getSumA.corLength = $corArrA.length
+
+
+    var $choseB = getChoseB,
+
+        $timeArrB = [],
+
+        $corArrB = [];
+
+
+    $.each($choseB, function (i, n) {
+
+        $.each(n, function (j, k) {
+
+            $timeArrB.push(k.time)
+
+            if (k.result == 'true') {
+
+                $corArrB.push(k.time)
+            }
+
+        })
+
+    })
+
+    getSumB.sumTime = eval($timeArrB.join("+"))
+
+    getSumB.averageSumTime = eval($corArrB.join("+"))
+
+    getSumB.averageTime = getSumB.sumTime / $choseB.length
+
+    getSumB.averageTimeCor = getSumB.averageSumTime / $corArrB.length
+
+    getSumB.corLength = $corArrB.length
 
     /* ajax 请求接口路径，返回json 数据
-     * maxNum: 游戏总计时间
-     * errorNum ：错误点击次数
+     * getChoseA：第一部分返回参数
+     * getChoseB: 第二部分返回参数
+     * getSumA：第一部分总计时间返回参数
+     * getSumB：第二部分总计时间返回参数
      * */
 
     var param = {
 
-        timeObj: sumTime,
+        "getChoseA": getChoseA,
 
-        maxNum: maxNum,
+        "getChoseB": getChoseB,
 
-        errorNum: errorNum
+        "getSumA": getSumA,
+
+        "getSumB": getSumB
 
     }
 
