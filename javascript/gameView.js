@@ -51,7 +51,7 @@ function _event() {
 
         _setListTest()
 
-        _time(20, function () {
+        _time(120, function () {
 
             $('#screen3').show()
             $('#listBox').hide()
@@ -72,7 +72,7 @@ function _event() {
 
         sysTimeN = new Date()
 
-        _time(60, function () {
+        _time(360, function () {
 
             sysTimeO = new Date()
 
@@ -201,6 +201,8 @@ function _clickEvent(e) {
 
     if (dataRole == ArrD[clickN]) {
 
+        $('.target-error').hide()
+
         var $valNew;
 
         if (dataParRole != 'true') {
@@ -223,8 +225,14 @@ function _clickEvent(e) {
             sourceNum = 40
 
         }
+        if ($valNew) {
 
-        $(e.target).parent('li').attr('data-role', $valNew).children('p').text($valNew)
+            $(e.target).parent('li').attr('data-role', $valNew).children('p').text($valNew)
+        } else {
+
+            $(e.target).parent('li').attr('data-role', $valNew).children('p').addClass('empty').text($valNew)
+        }
+
 
         // console.log('点击对了', $valNew)
 
@@ -279,6 +287,8 @@ function _clickEvent(e) {
             errorNum = errorNum + 1
 
         }
+
+        $('.target-error').show()
         console.log('错误')
     }
 
@@ -319,6 +329,7 @@ function _setList() {
 
     $('#list li p').css({'font-size': listH / 10, 'line-height': listH / 5 + 'px'})
 
+    $('#list li p').removeClass('empty')
 
 }
 
@@ -350,7 +361,7 @@ function _setListTest() {
 
     $('#list li p').css({'font-size': listH / 7, 'line-height': listH / 3.5 + 'px'})
 
-
+    $('#list li p').removeClass('empty')
 }
 
 /*** 倒计时

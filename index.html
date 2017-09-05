@@ -93,15 +93,17 @@
 
 
 <div class="screen screen1" id="listBox">
-    <ul id="list" >
+    <ul id="list">
     </ul>
     <div class="stop img-box">
         <img src="img/stop.png" id="stop"/></div>
     <div class="target">
         <p id="target">1</p>
+        <div class="target-error"></div>
         目标数字
     </div>
     <div class="time-box">
+
         剩余时间
         <p><span id="time">120</span>秒</p>
 
@@ -113,16 +115,21 @@
 <script>
     var screenH = $(document).height()
 
-    $('.box-bg').css({'font-size': screenH / 32, 'line-height': screenH / 16 + 'px'})
-    $('.box-bg .font-small').css({'font-size': screenH / 35})
-    $('.box-bg .font-big').css({'font-size': screenH / 30, 'line-height': screenH / 12 + 'px'})
-    $('.button').css({'font-size': screenH / 35, 'line-height': screenH / 15 + 'px'})
+    $('.box-bg').css({'font-size': screenH / 28, 'line-height': screenH / 16 + 'px'})
+    $('.box-bg .font-small').css({'font-size': screenH / 31})
+    $('.box-bg .font-big').css({'font-size': screenH / 26, 'line-height': screenH / 12 + 'px'})
+    $('.button').css({'font-size': screenH / 30, 'line-height': screenH / 15 + 'px'})
     $('.target').css({'width': screenH * 0.15, 'font-size': screenH / 30})
     $('.target p').css({
         'width': screenH * 0.13,
         'height': screenH * 0.13 + 'px',
         'line-height': screenH * 0.13 + 'px',
         'font-size': screenH / 16
+    })
+    $('.target-error').css({
+        'width': screenH * 0.13,
+        'height': screenH * 0.13 + 'px',
+        'left': screenH * 0.01 + 'px'
     })
     $('.time-box').css({'width': screenH * 0.15, 'font-size': screenH / 30})
     $('.time-box p').css({
@@ -132,7 +139,6 @@
         'font-size': screenH / 30
     })
     $('.time-box p span').css({'font-size': screenH / 18})
-
 
 
 </script>
